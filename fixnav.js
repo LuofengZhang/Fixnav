@@ -1,24 +1,29 @@
-$.fn.fixnav = function() {
-	$(this).prev_marginBottom = parseInt($(this).prev().css("margin-bottom").substring(0, $(this).prev().css("margin-bottom").length - 2));
-	$(this).next_marginTop = parseInt($(this).next().css("margin-top").substring(0, $(this).next().css("margin-top").length - 2));
-	var topPosition = $(document).scrollTop();
-	var navPosition = $(this).prev().outerHeight(true);
-	fix();
-	$(document).scroll(function() {
+$.fn.fixnav = function(){
+	var $_this = $(this),
+		prev_marginBottom = parseInt($_this.prev().css("margin-bottom")),
+		next_marginTop = parseInt($_this.next().css("margin-top")),
+		topPosition = $(document).scrollTop(),
+		navPosition = $_this.prev().outerHeight(true);
+	
+	_if();
+
+	$(document).scroll( function() {
 		topPosition = $(document).scrollTop();
-		fix()
+		_if();
 	});
-	$(window).resize(function() {
-		navPosition = $(this).prev().outerHeight(true);
-		fix()
-	});
-	function fix() {
-		if(topPosition >= navPosition) {
-			$(this).css("position", "fixed");
-			$(this).next().css("margin-top", $(this).prev_marginBottom + $(this).outerHeight() + $(this).next_marginTop + "px")
-		} else {
-			$(this).css("position", "relative");
-			$(this).next().css("margin-top", $(this).next_marginTop + "px")
+
+	$(window).resize(function(){ 
+		navPosition = $_this.prev().outerHeight(true);
+		_if();
+	}); 
+
+	function _if(){
+		if (topPosition >= navPosition){
+			$_this.css("position", "fixed");
+			$_this.next().css("margin-top", prev_marginBottom + $_this.outerHeight() + next_marginTop + "px");
+		}else{
+			$_this.css("position", "relative");
+			$_this.next().css("margin-top", next_marginTop + "px");
 		}
 	}
-};
+}
