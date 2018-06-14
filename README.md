@@ -16,7 +16,7 @@
 
 ## 开发人员
 
-本插件由本人 Luofeng Zhang 独立开发，您可以：[查看我的个人介绍](http://www.zhchina.top)
+本插件由本人 Luofeng Zhang 独立开发，您可以：[查看我的个人介绍](http://zhchina.top)
 
 ## 依赖
 
